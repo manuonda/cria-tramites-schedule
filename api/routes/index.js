@@ -8,7 +8,7 @@ module.exports = function({ UserRoutes}) {
   const apiRouter =  Router()
 
   apiRouter.use(cors())
-           .use(compression);
+           .use(compression());
 
   apiRouter.use('/user', UserRoutes)
   router.use("/api", apiRouter); //api/user
