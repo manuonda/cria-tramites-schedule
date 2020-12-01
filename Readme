@@ -1,0 +1,6 @@
+Module que permite realizar la sincronizacion 
+con el server de amazon  y actualizar 
+los registros correspondien en la base de COE.
+
+> npm install express body-parser dotenv
+
