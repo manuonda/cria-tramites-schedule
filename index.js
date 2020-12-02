@@ -1,8 +1,9 @@
-// const{PORT} = require('./config/environments')
-const container = require('./api/container')
+require("dotenv").config();
+const express = require("express");
+const app     = express();
 
-const application =  container.resolve("app")
-application.start().catch(err => {
-   console.error(err);
-   process.exit();
+require("./api/routes")(app);
+
+app.listen(process.env.PORT, () => {
+  console.log("listen port :", process.env.PORT);
 });

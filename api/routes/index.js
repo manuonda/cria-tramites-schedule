@@ -1,15 +1,23 @@
 const {Router} = require('express');
 const bodyParser = require('body-parser')
 const cors  = require('cors')
-const compression = require('compression')
+const compression    = require('compression');
+const userRoutes     = require('./user.routes');
+const tramiteRoutes  = require('./tramite.routes');
 
-module.exports = function({ UserRoutes}) {
+module.exports = (app ) => {
+
   const router = Router()
   const apiRouter =  Router()
 
-  apiRouter.use(cors())
-           .use(compression());
+  app.use(cors())
+     .use(compression());
 
-  apiRouter.use('/user', UserRoutes)
-  router.use("/api", apiRouter); //api/user
+  // definition of router
+  router.use('/user', userRoutes)
+  router.use('/tramite', tramiteRoutes)
+  
+  // router access 
+  apiRouter.use("/api", router); //api/user
+  app.use(apiRouter);
 }

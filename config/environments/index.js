@@ -9,6 +9,8 @@ if(NODE_ENV === "production") {
     currentEnv = PRODUCTION;
 }else if(NODE_ENV === "qa") {
     currentEnv = QA;
+}else if(NODE_ENV === "development"){
+    currentEnv = DEVELOPMENT;
 }
 
 module.exports =  currentEnv;
