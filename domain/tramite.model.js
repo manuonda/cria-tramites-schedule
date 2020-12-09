@@ -1,28 +1,34 @@
 require('dotenv').config()
 const { connection } = require('../config/environments')
+const { SCHEMA } = process.env
 
-const knex = require('../config/database/db')
-const db =  require('../config/database/db')
-const table =  connection.database +'.tramites';
+const Knex = require('../config/database/db');
+const table =  SCHEMA +'.tramites';
+console.log(table);
 
+/**
+ * Find by id
+ * @param {*} id 
+ */
 const findById = (id) => {
-try {
-      console.log(db);
-      db.select().from(table)
-  } catch (error) {
-      return error;
-  }
+     return Knex.select()
+            .from(table)
+            .where('id_tramite',id);
 }
 
-const findAll =  () => {
-    try {
-        knex.select()
-    } catch (error) {
-        console.error(error)
-    }
+
+/**
+ * Find All
+ */
+const findAll =  ()  => {
+    return Knex.select().from(table);
 }
 
+
+/**
+ * Exports modules
+ */
 module.exports = {
-    findById : findById
-
+    findById : findById,
+    findAll: findAll
 }

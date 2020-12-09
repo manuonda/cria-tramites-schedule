@@ -5,4 +5,9 @@ los registros correspondien en la base de COE.
 > npm install express body-parser dotenv
 
 
+> Configuracion 
+index.js  --> permite crear el api para consultas: Se encargar pm2 para correrlo 
+worker.js --> este sera worker que trabajar a un tiempo determinado y se correra por el cron 
+
+
 

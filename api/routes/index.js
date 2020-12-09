@@ -4,6 +4,8 @@ const cors  = require('cors')
 const compression    = require('compression');
 const userRoutes     = require('./user.routes');
 const tramiteRoutes  = require('./tramite.routes');
+const pagoRoutes     = require('./pago.routes');
+
 
 module.exports = (app ) => {
 
@@ -12,10 +14,13 @@ module.exports = (app ) => {
 
   app.use(cors())
      .use(compression());
+  
+     
 
   // definition of router
-  router.use('/user', userRoutes)
-  router.use('/tramite', tramiteRoutes)
+  router.use('/users', userRoutes);
+  router.use('/tramites', tramiteRoutes);
+  router.use('/mercadopago', pagoRoutes);
   
   // router access 
   apiRouter.use("/api", router); //api/user

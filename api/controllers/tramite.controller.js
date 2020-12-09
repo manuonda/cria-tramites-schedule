@@ -2,15 +2,14 @@
  * Class Controller Correspondiente 
  * a Tramite
  */
+const { response } = require('express');
 const MP = require('../../config/library/mercadopago')
-const db = require('../../config/database/db')
 const tramiteModel = require('../../domain/tramite.model')
 
 class TramiteController{
     
-    constructor(db){
+    constructor(){
       this._MP = MP
-      this._db = db
     }
 
 
@@ -18,6 +17,7 @@ class TramiteController{
       try {
         const result = tramiteModel.findById(req.params.id);   
       } catch(error) {
+        console.error(`Error : ${error}`);
         res.status(500);
       } 
       
@@ -28,10 +28,14 @@ class TramiteController{
      * @param {*} req 
      * @param {*} res 
      */
-    findAll(req, res){
-     console.log(MP)
-     console.log(db)
-
+    async findAll(req, res){
+      try {
+        const rows =  await tramiteModel.findAll();
+        res.status(200).send(rows);
+      } catch (error) {
+         console.error(`Error : ${error}`);
+         res.status(500).send({ message: error});
+      }
     }
 }
 

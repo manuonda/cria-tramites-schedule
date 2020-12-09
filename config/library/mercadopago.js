@@ -1,3 +1,6 @@
+/**
+ * Configuracion de Mercado Pago
+ */
 require('dotenv').config()
 var mercadopago = require('mercadopago');
 mercadopago.configure({
