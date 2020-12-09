@@ -1,10 +1,10 @@
 const WorkerController  = require('./workers/worker.controller');
 const worker = new WorkerController();
-
+const logger =  require('./config/library/logger');
 try{
-    console.log("worker ejecutar");
-    worker.ejecutar();
+    logger.info('Init Operacion worker');
+    worker.execute();
 }catch(error) {
-   console.error(error);
+    logger.error(`Error init method execute :${error}`);
 }
 

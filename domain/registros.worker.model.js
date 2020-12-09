@@ -9,7 +9,7 @@ const table = SCHEMA + '.registros_workers';
  * un registro en la tabla registro_workers
  * @param {*} param0 
  */
-const add = ({ }) => {
+const add = () => {
 
 }
 
@@ -25,6 +25,6 @@ const lastRow = () => {
 
 
 module.exports = {
-    add : add,
-    lastRow: lastRow
+    addWorker : add,
+    lastWorkerRow: lastRow
 }
