@@ -1,5 +1,5 @@
 const logger = require("../config/library/logger");
-import { format, compareAsc } from "date-fns";
+const  { format, compareAsc } = require("date-fns");
 
 // domain
 const {
@@ -36,12 +36,13 @@ class WorkerController {
       //
       const row = await lastWorkerRow();
       if (Array.isArray(row) && row.length > 0) {
-        console.log("aqui ingreso ");
       } else {
         // no existe worker ejecutado
         const rows = await findRowNoProcesados();
         if (rows && rows.length > 0) {
+           this.procesarPagos(rows);
         }
+
       }
     } catch (error) {
       console.error(error);
@@ -63,13 +64,7 @@ class WorkerController {
 
       start_time_worker = format(new Date(), "HH:mm:ss");
       for (let i in rows) {
-        if (idFirstResultadoPagoOnline === null) {
-          idFirstResultadoPagoOnline = rows[i].id;
-        }
-        if (i === rows.length - 1) {
-          idLastResultadoPagoOnline = rows[i].id;
-        }
-
+        
         let id = rows[i].id;
         let external_reference = rows[i].external_reference;
         let estado = rows[i].collection_status;
@@ -81,21 +76,16 @@ class WorkerController {
         );
 
         if (
-          estado !== "approved" ||
-          montoTransaction === null ||
-          montoRecibido === null
+          ( estado !== "approved" && estado !== "cancelled") ||
+            montoTransaction === null ||
+            montoRecibido === null
         ) {
           logger.info(
             `Se realiza actualizar registro con idTramite : ${external_reference}, status : ${estado}`
           );
-          let response = await this.mercadoPagoCtrl.getPayment(
-            external_reference
-          );
-          if (
-            response &&
-            response.body.results != null &&
-            response.body.results.length > 0
-          ) {
+          let response = await this.mercadoPagoCtrl.getPayment( id );
+          if ( response && response.body.results != null &&
+            response.body.results.length > 0 ) {
             let results = response.body.results[0];
             let status = results.status;
             let monto_total = 0;
@@ -108,15 +98,18 @@ class WorkerController {
             logger.info(
               `id: ${id} , external_reference : ${external_reference}, status :${status}, fechaPago : ${fecha_pago}, monto_total:${monto_total} , monto_recibido: ${monto_recibido}`
             );
-            const update = await updateWithDataMercadoPago(
-              id,
-              external_reference,
-              status,
-              fecha_pago,
-              monto_total,
-              monto_recibido
-            );
+
+            var data = {
+               statusCollection :  status,
+               fecha_pago : fecha_pago,
+               monto_total : monto_total,
+               monto_recibido : monto_recibido
+            };
+
+            const update = await updateWithDataMercadoPago(id, data);
             logger.info(`Result Pago Online Update : ${update}`);
+            // insert registros en reg
+
           }
         }
       }

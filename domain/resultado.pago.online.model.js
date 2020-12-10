@@ -9,9 +9,9 @@ const table = SCHEMA + '.resultado_pago_online';
  */
 const findRowNoProcesados = ( idResultadoPagoOnline = "")  => {
    if ( idResultadoPagoOnline === "") {
-       return knex.select().from(table);
+       return knex.select().from(table).whereNot("collection_status","cancelled");
    } else {
-       return knex.select()-from(table).where('id', idResultadoPagoOnline);
+       return knex.select().from(table).where('id', idResultadoPagoOnline).andWhereNot("collection_status","cancelled");
    }
 }
 
@@ -21,15 +21,8 @@ const findRowNoProcesados = ( idResultadoPagoOnline = "")  => {
  * de mercado pago
  * @param {*} param0 
  */
-const updateWithDataMercadoPago = ( id , idExternalReference, statusCollection, fechaPago, montoTransaction, montoRecibido ) => {
-  var update = {
-      collection_status: statusCollection,
-      fecha_pago: fechaPago,
-      monto_transaction: montoTransaction,
-      monto_recibido : montoRecibido
-  };
-  console.log(update);
-  return knex(table).where('id_tramite', idExternalReference).update(update); 
+const updateWithDataMercadoPago = ( id , update ) => {
+  return knex(table).where('id', id).update(update); 
 }
 
 module.exports = {

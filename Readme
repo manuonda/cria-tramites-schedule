@@ -11,3 +11,9 @@ worker.js --> este sera worker que trabajar a un tiempo determinado y se correra
 
 
 
+
+1 -  Al generar el Pago se creara un registro en la tabla resultado_pago_online, con el id correspondiente de la tabla resultado_pago_online, 
+     se enviara la informacion a mercado pago como external_reference.
+2 -  El schedule correra la tabla resultado_pago_online con el id previamente enviado a MercadoPago en el external_reference.
+3 -  Al generar un pago se debe poder un registro en la tabla resultado_pago_online.
+4 -  La tabla mercado pago online, puede tener varios registros. cancelled
