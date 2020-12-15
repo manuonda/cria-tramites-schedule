@@ -1,0 +1,7 @@
+2020-12-15 19:34:22.643 INFO  Init Operacion worker 
+2020-12-15 19:34:22.881 INFO  Estado approved , fechaPago : 2020-12-14T18:51:17.000-04:00 , montoTransaction :20 , montoRecibido :18.55 
+2020-12-15 19:34:22.881 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-15 19:34:22.881 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-15 19:34:22.881 INFO  init method getPayment 
+2020-12-15 20:06:38.985 INFO  Init Operacion worker 
+2020-12-15 20:14:02.419 INFO  Init Operacion worker 

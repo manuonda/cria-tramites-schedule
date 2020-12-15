@@ -9,8 +9,8 @@ const table = SCHEMA + '.registros_workers';
  * un registro en la tabla registro_workers
  * @param {*} param0 
  */
-const add = () => {
-
+const add = (data) => {
+   return knex(table).insert(data);
 }
 
 /**

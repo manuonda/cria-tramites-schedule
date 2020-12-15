@@ -1,5 +1,5 @@
 const logger = require("../config/library/logger");
-const  { format, compareAsc } = require("date-fns");
+const  { format } = require("date-fns");
 
 // domain
 const {
@@ -60,9 +60,10 @@ class WorkerController {
       let idLastResultadoPagoOnline = null;
       let start_time_worker = null;
       let end_time_worker = null;
-      let fecha_ejecucion = format(new Date(), "dd/MM/yyyy");
+      let fecha_ejecucion = format(new Date(), "yyyy-MM-dd HH:mm:ss");
 
       start_time_worker = format(new Date(), "HH:mm:ss");
+      let cantidad = 0;
       for (let i in rows) {
         
         let id = rows[i].id;
@@ -80,6 +81,7 @@ class WorkerController {
             montoTransaction === null ||
             montoRecibido === null
         ) {
+          
           logger.info(
             `Se realiza actualizar registro con idTramite : ${external_reference}, status : ${estado}`
           );
@@ -90,30 +92,51 @@ class WorkerController {
             let status = results.status;
             let monto_total = 0;
             let monto_recibido = 0;
-            let fecha_pago = results.money_release_date;
+            let fecha_pago        = results.money_release_date;
+            let collection_id     = results.id;
+            let payment_type      = results.payment_type_id;
+            let merchant_order_id = results.order.id;
+            let processing_mode   = results.processing_mode;
+
             if (results.transaction_details != null) {
               monto_total = results.transaction_details.total_paid_amount;
               monto_recibido = results.transaction_details.net_received_amount;
             }
             logger.info(
-              `id: ${id} , external_reference : ${external_reference}, status :${status}, fechaPago : ${fecha_pago}, monto_total:${monto_total} , monto_recibido: ${monto_recibido}`
+              `id: ${id} , external_reference : ${id}, status :${status}, fechaPago : ${fecha_pago}, monto_total:${monto_total} , monto_recibido: ${monto_recibido}`
             );
 
             var data = {
-               statusCollection :  status,
+               collection_status :  status,
                fecha_pago : fecha_pago,
-               monto_total : monto_total,
-               monto_recibido : monto_recibido
+               monto_transaction : monto_total,
+               monto_recibido : monto_recibido,
+               collection_id : collection_id,
+               payment_type : payment_type,
+               merchant_order_id: merchant_order_id,
+               processing_mode
             };
+
+            console.log(data);
 
             const update = await updateWithDataMercadoPago(id, data);
             logger.info(`Result Pago Online Update : ${update}`);
             // insert registros en reg
-
+            cantidad++;  
           }
         }
       }
       end_time_worker = format(new Date(), "HH:mm:ss");
+      
+      // agrega un registro de valores de registro_workers
+      var data ={
+         fecha_ejecucion: fecha_ejecucion,
+         start_time_worker: start_time_worker,
+         end_time_worker: end_time_worker ,
+         cantidad_procesados: cantidad
+      };
+      await addWorker(data);
+
     } catch (error) {
       logger.error(`Error procesarPago :${error}`);
     }
