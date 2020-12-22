@@ -33,17 +33,12 @@ class WorkerController {
    */
   async execute() {
     try {
-      //
-      const row = await lastWorkerRow();
-      if (Array.isArray(row) && row.length > 0) {
-      } else {
         // no existe worker ejecutado
-        const rows = await findRowNoProcesados();
+      const rows = await findRowNoProcesados();
         if (rows && rows.length > 0) {
            this.procesarPagos(rows);
         }
 
-      }
     } catch (error) {
       console.error(error);
       logger.error(`Error : ${error}`);
@@ -76,8 +71,7 @@ class WorkerController {
           `Estado ${estado} , fechaPago : ${fechaPago} , montoTransaction :${montoTransaction} , montoRecibido :${montoRecibido}`
         );
 
-        if (
-          ( estado !== "approved" && estado !== "cancelled") ||
+        if (( estado !== "approved" && estado !== "cancelled") ||
             montoTransaction === null ||
             montoRecibido === null
         ) {

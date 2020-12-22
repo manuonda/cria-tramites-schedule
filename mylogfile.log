@@ -5,3 +5,50 @@
 2020-12-15 19:34:22.881 INFO  init method getPayment 
 2020-12-15 20:06:38.985 INFO  Init Operacion worker 
 2020-12-15 20:14:02.419 INFO  Init Operacion worker 
+2020-12-21 19:13:31.187 INFO  Init Operacion worker 
+2020-12-21 19:15:59.482 INFO  Init Operacion worker 
+2020-12-21 19:17:25.550 INFO  Init Operacion worker 
+2020-12-21 19:20:16.707 INFO  Init Operacion worker 
+2020-12-21 19:20:16.929 INFO  Estado approved , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:16.929 INFO  Se realiza actualizar registro con idTramite : undefined, status : approved 
+2020-12-21 19:20:16.929 INFO  init method getPayment 
+2020-12-21 19:20:17.926 INFO  id: 41 , external_reference : 41, status :approved, fechaPago : 2020-12-17T17:29:05.000-04:00, monto_total:1 , monto_recibido: 0.93 
+2020-12-21 19:20:17.985 INFO  Result Pago Online Update : 1 
+2020-12-21 19:20:17.985 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:17.985 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:17.985 INFO  init method getPayment 
+2020-12-21 19:20:18.779 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:18.779 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:18.779 INFO  init method getPayment 
+2020-12-21 19:20:19.625 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:19.625 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:19.625 INFO  init method getPayment 
+2020-12-21 19:20:20.448 INFO  id: 38 , external_reference : 38, status :pending, fechaPago : null, monto_total:1 , monto_recibido: 0 
+2020-12-21 19:20:20.501 INFO  Result Pago Online Update : 1 
+2020-12-21 19:20:20.501 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:20.501 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:20.501 INFO  init method getPayment 
+2020-12-21 19:20:21.307 INFO  id: 48 , external_reference : 48, status :pending, fechaPago : null, monto_total:1 , monto_recibido: 0 
+2020-12-21 19:20:21.360 INFO  Result Pago Online Update : 1 
+2020-12-21 19:20:21.360 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:21.360 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:21.360 INFO  init method getPayment 
+2020-12-21 19:20:22.178 INFO  id: 50 , external_reference : 50, status :pending, fechaPago : null, monto_total:1 , monto_recibido: 0 
+2020-12-21 19:20:22.233 INFO  Result Pago Online Update : 1 
+2020-12-21 19:20:22.233 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:22.233 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:22.233 INFO  init method getPayment 
+2020-12-21 19:20:22.876 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:22.876 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:22.876 INFO  init method getPayment 
+2020-12-21 19:20:23.682 INFO  Estado approved , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:23.682 INFO  Se realiza actualizar registro con idTramite : undefined, status : approved 
+2020-12-21 19:20:23.682 INFO  init method getPayment 
+2020-12-21 19:20:24.456 INFO  id: 51 , external_reference : 51, status :approved, fechaPago : 2020-12-21T18:15:40.000-04:00, monto_total:1 , monto_recibido: 0.93 
+2020-12-21 19:20:24.509 INFO  Result Pago Online Update : 1 
+2020-12-21 19:20:24.509 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:24.509 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:24.509 INFO  init method getPayment 
+2020-12-21 19:20:25.342 INFO  Estado pending , fechaPago : null , montoTransaction :null , montoRecibido :null 
+2020-12-21 19:20:25.342 INFO  Se realiza actualizar registro con idTramite : undefined, status : pending 
+2020-12-21 19:20:25.342 INFO  init method getPayment 
