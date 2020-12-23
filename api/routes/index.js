@@ -5,6 +5,7 @@ const compression    = require('compression');
 const userRoutes     = require('./user.routes');
 const tramiteRoutes  = require('./tramite.routes');
 const pagoRoutes     = require('./pago.routes');
+const turnoRoutes    = 
 
 
 module.exports = (app ) => {
@@ -21,6 +22,7 @@ module.exports = (app ) => {
   router.use('/users', userRoutes);
   router.use('/tramites', tramiteRoutes);
   router.use('/mercadopago', pagoRoutes);
+  route.use('./turnos', tr)
   
   // router access 
   apiRouter.use("/api", router); //api/user

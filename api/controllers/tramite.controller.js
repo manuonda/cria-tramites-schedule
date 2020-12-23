@@ -2,7 +2,6 @@
  * Class Controller Correspondiente 
  * a Tramite
  */
-const { response } = require('express');
 const MP = require('../../config/library/mercadopago')
 const tramiteModel = require('../../domain/tramite.model')
 
